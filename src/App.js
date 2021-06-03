@@ -12,7 +12,7 @@ function App() {
     });
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const pusher = new Pusher("dd7407fe728073ab80fe", {
       cluster: "ap2",
     });

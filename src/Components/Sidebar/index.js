@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.scss";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
 import { Avatar, IconButton } from "@material-ui/core";
@@ -7,7 +7,25 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { SearchOutlined } from "@material-ui/icons";
 import SidebarChat from "../SidebarChat";
 
-const index = () => {
+const Index = () => {
+  const [people, setPeople] = useState([
+    {
+      name: "Ayush Singh",
+      message: "Hey, wassup. How are you",
+      img: "https://ayushsingh11.web.app/static/media/profile.da917c0d.jpeg",
+    },
+    {
+      name: "Mark Zuckerberg",
+      message: "Hey, I am watching you 🙃🙃",
+      img: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTsMrpBjxQX8uJCryNVI6Gvc_jPd6QtzDJF8C-p3RQmcu269bKd",
+    },
+    {
+      name: "Modi",
+      message: "Mitroooooon 👏👏",
+      img: "https://cdn.narendramodi.in/cmsuploads/0.78956100_1622009899_1155-1-prime-minister-narendra-modi-participates-in-virtual-vesak-day-celebrations-on-buddha-purnima.jpg",
+    },
+  ]);
+
   return (
     <div className="sidebar">
       <div className="sidebar__header">
@@ -36,14 +54,12 @@ const index = () => {
       </div>
 
       <div className="sidebar__chats">
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
-
-        <SidebarChat />
+        {people.map((person, index) => {
+          return <SidebarChat key={index} person={person} />;
+        })}
       </div>
     </div>
   );
 };
 
-export default index;
+export default Index;

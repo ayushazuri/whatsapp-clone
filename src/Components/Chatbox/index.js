@@ -14,13 +14,18 @@ import axios from "../../axios";
 const Chatbox = ({ messages }) => {
   const [input, setInput] = useState("");
 
+  const getTime = () => {
+    return `${new Date().getHours()}:${new Date().getMinutes()}`;
+  };
+
+  getTime();
   const sendMessage = async (e) => {
     e.preventDefault();
 
     await axios.post("/messages/new", {
       message: input,
       name: "Ayush",
-      timestamp: "Just now",
+      timestamp: getTime(),
       received: false,
     });
 
@@ -42,8 +47,8 @@ const Chatbox = ({ messages }) => {
       <div className="chat__header">
         <Avatar />
         <div className="chat__headerInfo">
-          <h3></h3>
-          <p>Last seen at ..</p>
+          <h3>Ayush Singh</h3>
+          <p>Last seen at {getTime()}</p>
         </div>
 
         <div className="chat__headerRight">
